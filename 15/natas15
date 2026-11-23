@@ -4,6 +4,6 @@ as part of the username query, we can figure out what the password for natas16 b
 of the database is such that queries are fuzzy (i.e. case insensitive).  As part of our SQL query, we must include
 "COLLATE latin1_general_cs" to ensure a match.
 
-The password for natas16 is WaIHEacj63wnNIBROHeqi3p9t0m5nhmh
+The password for natas16 is Xm6XEeRN3zsGjRDqBPmuqAVV65k7e3Gb
 
 Script to do a single blind sql query is in 15/blindsql.py
