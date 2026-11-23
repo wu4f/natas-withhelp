@@ -1,0 +1,37 @@
+The web site allows users to create accounts.  It also clears these accounts
+after 5 minutes.  To dump the credentials of an account, you must supply
+a valid username and password.  In both checkCredentials() and validUser(), 
+there is this line after the select that determines if you get access:
+    if(mysql_num_rows($res) > 0){ 
+        return True; 
+    } 
+In dumpData(), there is this line that determines what gets retrieved:
+	if(mysql_num_rows($res) > 0) { 
+            while ($row = mysql_fetch_assoc($res)) { 
+                return print_r($row); 
+            } 
+        } 
+It's as if they coded it thinking there would be multiple rows returned
+rather than exactly one.  So, if one were to be able to insert a duplicate 
+user, then knowing the credentials of the duplicate user will dump the 
+other user.  The goal is to try to then win a race condition every 5 minutes
+by attempting to create a bogus natas28 user before the system repopulates
+it with its own natas28 user.  We assume that the system doesn't check to
+see of a natas28 user already exists in the database before blindly inserting
+the target account.  After correctly timing a torrent of requests on the
+5 minute mark, we eventually get the additional credential.
+
+---
+An alternative solution would be adding another natas28 account via abusing
+mysql truncation. The column 'username' has a character limit of 64. If we supply
+a username with a longer character count, it will get truncated. 
+
+Entering "natas28                                                         a"
+(natas28 followed by 57 spaces followed by an "a") results in the "a" being
+truncated off. The whitespace then gets trimed off. The result is that we
+are able to create another account with the username "natas28".
+
+Finally, we can log on to the natas28 account using whatever password we
+just supplied.
+
+password for natas28: JWwR438wkgTsNKBbcJoowyysdM82YjeF

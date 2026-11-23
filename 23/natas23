@@ -1,0 +1,14 @@
+PHP mistyping bug
+This PHP script attempts to show you that PHP does crazy type interpretations
+based on the first couple of characters.  If a string begins with what looks
+like a number (i.e. two consecutive ASCII numbers), it interprets the string
+as a number until it reaches a non-numeric ASCII character and returns an
+integer value.  The exact same string, when passed to a string function like 
+strstr, is interpreted as a string not an integer.  Thus, for strstr, you
+can pass the test by putting "iloveyou" at the end of the password and
+for the "> 10" test, you put in a two digit number.
+
+http://natas23.natas.labs.overthewire.org/?passwd=11iloveyou
+
+The credentials for the next level are:
+Username: natas24 Password: OsRmXFguozKpTZZ5X14zNO43379LZveg

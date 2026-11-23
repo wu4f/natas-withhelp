@@ -1,0 +1,47 @@
+The PHP script uses an integer from 1 to 640 as the userid.  One of these is the admin's 
+userid.  In order for the code in print_credentials() to spit out the admin credentials,
+$_SESSION["admin"] must not be set to 0 before the function is called. 
+
+This is the main code....
+$showform = true;
+if(my_session_start()) {
+    print_credentials();
+    $showform = false;
+} else {
+    if(array_key_exists("username", $_REQUEST) && array_key_exists("password", $_REQUEST)) {
+    session_id(createID($_REQUEST["username"]));
+    session_start();
+    $_SESSION["admin"] = isValidAdminLogin();
+    debug("New session started");
+    $showform = false;
+    print_credentials();
+    }
+}  
+
+The else clause effectively sets $_SESSION["admin"] to 0 since isValidAdminLogin always returns 0.
+So calling print_credentials() in the else clause can never dump the admin's credentials.  So,
+we must make my_session_start() return true.  The code below is my_session_start().  The only
+way it can return true is for PHPSESSID to be set to the ID of the admin (and for the admin
+to have previously logged in before).  We are assuming that there is an active admin session so
+that the call to array_key_exists returns true (so that we then fall out of my_session_start with
+a true. 
+
+function my_session_start() { /* {{{ */
+    if(array_key_exists("PHPSESSID", $_COOKIE) and isValidID($_COOKIE["PHPSESSID"])) {
+    if(!session_start()) {
+        debug("Session start failed");
+        return false;
+    } else {
+        debug("Session start ok");
+        if(!array_key_exists("admin", $_SESSION)) {
+        debug("Session was old: admin flag set");
+        $_SESSION["admin"] = 0; // backwards compatible, secure
+        }
+        return true;
+    }
+    }
+    return false;
+}
+
+So, do a brute force attack on the PHPSESSID from 1 to 640 and scan the results to get the password.
+Password is 4IwIrekcuZlA9OsjOkoUtwU6lhokCPYs

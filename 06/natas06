@@ -1,0 +1,3 @@
+PHP that implements this level has a form looking for a secret.  It includes a file called secret.inc.  Direct access
+to it reveals the secret which you can enter in the form and get the credentials.
+Access granted. The password for natas7 is 7z3hEENjQtflzgnT29q7wAvMNfZdh0i9

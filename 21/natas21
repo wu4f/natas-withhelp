@@ -1,0 +1,11 @@
+PHP also has the vulnerability in that $_SESSION is a global.  Thus, PHP apps
+co-located on the same web-server can use each other's session state 
+between them.  In the natas21-experimenter site, the insecure PHP script
+allows you to arbitrarily set key-value pairs.  So, you can set admin=1 on
+your session with the experimenter site.  Since $_SESSION is a global,
+you can then take the PHPSESSID from the experimenter site and use it
+directly on the natas21 site.  It will pull out the session you had on
+the experimenter site which had admin set to 1.  The admin parameters are
+then dumped out.
+
+Password: chG9fbe1Tq2eWVMgjYYD1MsfIvN461kJ

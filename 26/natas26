@@ -1,0 +1,18 @@
+PHP serialization, PHP object injection, and misplaced trust
+
+By letting the client store the serialized PHP object and trusting the
+client not to modify the object, the server is vulnerable to rogue
+object injection.  We can inject a "Logger" object into the drawing
+which will be unpacked by the PHP server and used directly.  With our
+injected Logger object, the __destroy() function outputs an
+exit message to a log file upon completion of the script.  Both of these
+are stored in the object that we have control over.  So, set the log file
+to point to an accessible directory on the server (img/myphp.php) and
+then set the exit message to "passthru("cat /etc/natas_webpass/natas27").
+Then, access the PHP script directly to get the desired password.
+
+Note that the directory contains PHP code to output the Logger object
+we want.  The python code uses the output of the PHP script to set the
+drawing field.
+
+Password for natas27 is:  55TBjpPZUUJgVP5b3BnbG6ON9uDPVzCJ

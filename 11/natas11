@@ -1,0 +1,42 @@
+Cookie that is being used takes an array in php, json_encodes it, xor encrypts it, then base64encodes it.
+The default cookie value is taken from an initial request.  Since the PHP gives us the plaintext values that
+were used to generate this cookie, we can then produce the input just before the xor_encrypt and the output
+right after it.  (initial plaintext=>json_encode to get the former, initial cookie=>base64_decode to get the
+latter).  When you xor these two values, a repeating sequence of the key used to encrypt is produced.  After
+getting this key, simply change the initial plaintext to set showpassword to "yes", then create your own cookie
+that gets you in.  Note that you must tweak xor_encrypt a bit to do the deed.
+
+cookie to natas12 is ClVLIh4ASCsCBE8lAxMacFMOXTlTWxooFhRXJh4FGnBTVF4sFxFeLFMK
+password to natas12 is EDXp0pS26wLKHZy1rDBPUZk0RKfLGIR3
+
+PHP site to execute->http://writecodeonline.com/php/
+PHP script
+
+function xor_encrypt($in,$out) {
+    $key = $out;
+    $text = $in;
+    $outText = '';
+
+    // Iterate through each character
+    for($i=0;$i<strlen($text);$i++) {
+    $outText .= $text[$i] ^ $key[$i % strlen($key)];
+    }
+
+    return $outText;
+}
+echo 'Hello World';
+$defaultdata = array( "showpassword"=>"no", "bgcolor"=>"#ffffff");
+$attackdata = array( "showpassword"=>"yes", "bgcolor"=>"#ffffff");
+
+$x = json_encode($defaultdata);
+$y = base64_decode("ClVLIh4ASCsCBE8lAxMacFMZV2hdVVotEhhUJQNVAmhSEV4sFxFeaAw=");
+$z = xor_encrypt($x,$y);
+$done = xor_encrypt(json_encode($attackdata), "qw8J");
+echo "$z\n";
+$reallydone = base64_encode($done);
+echo $reallydone;
+
+-----
+Output
+Hello Worldqw8Jqw8Jqw8Jqw8Jqw8Jqw8Jqw8Jqw8Jqw8Jqw8Jq
+ClVLIh4ASCsCBE8lAxMacFMOXTlTWxooFhRXJh4FGnBTVF4sFxFeLFMK

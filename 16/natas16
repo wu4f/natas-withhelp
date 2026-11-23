@@ -1,0 +1,13 @@
+The form disallows the ";" that we used to terminate the grep in the previous level.  So, in order to modify
+our attack, we instead resort to a subshell using $().  Within the subshell, we can incrementally grep for
+patterns against the /etc/natas_webpass/natas17 file.  If the internal grep succeeds, then you will get
+no output in the outer grep on the dictionary (since the password string does not exist in the dictionary).
+If the internal grep fails, then you will return a null from the subshell which will cause the outer grep
+to return the entire dictionary.  So, the script does a binary search on the characters and numbers in
+order to find the password.  Note, that you can use "^$(cut -c <col> /etc/natas_webpass/natas17)" to 
+quickly identify characters in particular positions.
+
+Password is 8Ps3H0GWbn5rd9S7GmAdgQNdkhPkq9cw
+
+See natas17.py for code.  Note that it requires requests, lxml packages to be installed within your
+python installation (Use PIP to install).

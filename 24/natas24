@@ -1,0 +1,11 @@
+PHP Typing and poorly handled errors
+
+strcmp will fail if you pass it a non-string parameter.  The problem is
+that failure returns 0 which is the same as the check being true!!
+So, instead of passing a string into the script, pass an array.
+
+http://turbochaos.blogspot.com/2013/08/exploiting-exotic-bugs-php-type-juggling.html
+
+http://natas24.natas.labs.overthewire.org/?passwd[]=f
+
+password for natas25 is: GHF6X7YwACaYYssHVY05cFq83hRktl4c

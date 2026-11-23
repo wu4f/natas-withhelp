@@ -1,0 +1,12 @@
+PHP checks to see if secret that the user enters matches a stored secret after it has been base64_encoded, strrev, and
+bin2hex.  So, we can go to an on-line PHP debugger/sandbox and execute the following.
+
+$encodedSecret = "3d3d516343746d4d6d6c315669563362";
+$output = base64_decode(strrev(hex2bin($encodedSecret)));
+echo $output;
+
+Note that if the PHP sandbox is unable to do the base64_decode, you will need to find an on-line base64 decoder to
+do the last step.
+
+secret is: oubWYf2kBq
+to reveal the password for natas9: W0mMhUcRRnG8dcghE4qvk3JA9lGt8nDl

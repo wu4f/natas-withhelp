@@ -1,0 +1,8 @@
+This is the exact same thing as the previous level, but the cookie is encoded in ASCII.
+PHPSESSID=31342d41 is the ASCII encoding for 14-A
+
+So the userid is 14 and the username is A.  Sequence through %d-admin where %d goes
+from 1 to 640.
+
+password is  eofm3Wsshxc5bwtVnEuGIlr7ivb9KABF
+

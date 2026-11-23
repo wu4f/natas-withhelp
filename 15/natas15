@@ -1,0 +1,9 @@
+The existence check for a particular user is vulnerable to a blind SQL injection attack where characters from the
+password of natas16 can be checked one character at a time.  By injecting a rogue "AND password REGEXP "^[a-zA-Z0-9]" ..
+as part of the username query, we can figure out what the password for natas16 begins with.  Note that the encoding
+of the database is such that queries are fuzzy (i.e. case insensitive).  As part of our SQL query, we must include
+"COLLATE latin1_general_cs" to ensure a match.
+
+The password for natas16 is WaIHEacj63wnNIBROHeqi3p9t0m5nhmh
+
+Script to do a single blind sql query is in 15/blindsql.py
