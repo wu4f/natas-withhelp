@@ -14,3 +14,4 @@ OverTheWire rotates passwords. The values below are the live credentials verifie
 | natas7 | `B1szg95UcTnrzwnF3i3TzYHlyYh8iBV0` | 2026-11-23 |
 | natas8 | `ugXL95KQmUAJJj6bMezOlBNDyI9Imwkc` | 2026-11-23 |
 | natas9 | `UdxmI27dTaXmnd1rxKQTfws6jihTdcQ9` | 2026-11-23 |
+| natas10 | `EgjlkzB6E8LJyf2Obt4q7q4ewt5ZWSNv` | 2026-11-23 |
