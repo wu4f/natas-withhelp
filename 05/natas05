@@ -1,7 +1,7 @@
 App uses a Cookie: that has a logged in variable which can be directly modified in burp from 0 to 1
 Or, use python to set cookie
 
-Access granted. The password for natas6 is aGoY4q2Dc6MgDq4oL4YtoKtyAg9PeHa1
+Access granted. The password for natas6 is 7mhjtShJAcld2NYbKHEadnhEwRn2P8VT
 
 ------------
 #!/bin/python3
