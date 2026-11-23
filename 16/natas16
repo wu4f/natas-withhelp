@@ -9,5 +9,5 @@ quickly identify characters in particular positions.
 
 Password is 8Ps3H0GWbn5rd9S7GmAdgQNdkhPkq9cw
 
-See natas17.py for code.  Note that it requires requests, lxml packages to be installed within your
+See natas16.py for code.  Note that it requires requests, lxml packages to be installed within your
 python installation (Use PIP to install).
