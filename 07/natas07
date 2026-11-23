@@ -1,3 +1,3 @@
 PHP treats the input parameter passed in the URL as a file name to open.  This is bad because the adversary can munge
 the URL to get it to point to ../../../../etc/natas_webpass/natas8 and pull out the password.
-password for natas8 is DBfUBfqQG69KvJvJ1iAbMoIpwSNQ9bWe
+password for natas8 is ugXL95KQmUAJJj6bMezOlBNDyI9Imwkc
